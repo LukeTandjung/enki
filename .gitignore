@@ -3,3 +3,6 @@
 
 # Mac related files
 .DS_Store
+
+# Bun related files
+node_modules
