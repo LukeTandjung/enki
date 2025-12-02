@@ -1,2 +1,5 @@
 # Nix flake related files
 .direnv/
+
+# Mac related files
+.DS_Store
