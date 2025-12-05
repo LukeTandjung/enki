@@ -4,9 +4,12 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
-    "preview": "vite preview"
+    "dev": "wxt",
+    "dev:firefox": "wxt -b firefox",
+    "build": "wxt build",
+    "build:firefox": "wxt build -b firefox",
+    "zip": "wxt zip",
+    "zip:firefox": "wxt zip -b firefox"
   },
   "dependencies": {
     "@base-ui-components/react": "^1.0.0-rc.0",
@@ -17,18 +20,18 @@
     "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "@crxjs/vite-plugin": "^2.0.3",
     "@types/chrome": "^0.1.1",
     "@types/node": "^24.0.15",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@vitejs/plugin-react": "^4.7.0",
+    "@wxt-dev/module-react": "^1.1.5",
     "autoprefixer": "^10.4.22",
     "postcss": "^8.5.6",
     "tailwindcss": "^4.1.17",
     "typescript": "~5.8.3",
     "vite": "^7.0.5",
-    "vite-plugin-zip-pack": "^1.2.4",
-    "vite-tsconfig-paths": "^5.1.4"
+    "vite-tsconfig-paths": "^5.1.4",
+    "wxt": "^0.20.11"
   }
 }

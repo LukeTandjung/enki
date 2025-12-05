@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+  "name": "enki",
+  "version": "1.0.0",
+  "commands": {
+    "wxt:reload-extension": {
+      "description": "Reload the extension during development",
+      "suggested_key": {
+        "default": "Alt+R"
+      }
+    }
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "browser_action": {
+    "default_popup": "popup.html"
+  },
+  "permissions": [
+    "http://localhost/*",
+    "tabs"
+  ],
+  "content_security_policy": "script-src 'self' http://localhost:3000; object-src 'self';"
+}

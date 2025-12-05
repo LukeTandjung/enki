@@ -10,7 +10,12 @@
     "module": "ESNext",
     "moduleResolution": "bundler",
     "paths": {
-      "*": ["./src/*"]
+      "pages": ["./pages"],
+      "pages/*": ["./pages/*"],
+      "components": ["./src/components"],
+      "components/*": ["./src/components/*"],
+      "assets": ["./src/assets"],
+      "assets/*": ["./src/assets/*"]
     },
     "types": ["vite/client", "chrome"],
     "allowImportingTsExtensions": true,
@@ -23,5 +28,5 @@
     "skipLibCheck": true,
     "noUncheckedSideEffectImports": true
   },
-  "include": ["src"]
+  "include": ["entrypoints", "components", "pages", "assets"]
 }
