@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "enki",
+  "version": "1.0.0",
+  "icons": {
+    "48": "public/logo.png"
+  },
+  "action": {
+    "default_icon": {
+      "48": "public/logo.png"
+    },
+    "default_popup": "src/popup/index.html"
+  },
+  "permissions": [
+    "sidePanel",
+    "contentSettings"
+  ],
+  "content_scripts": [
+    {
+      "js": [
+        "src/content/main.tsx-loader.js"
+      ],
+      "matches": [
+        "https://*/*"
+      ]
+    }
+  ],
+  "side_panel": {
+    "default_path": "src/sidepanel/index.html"
+  },
+  "background": {
+    "service_worker": "service-worker-loader.js",
+    "type": "module"
+  },
+  "web_accessible_resources": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "resources": [
+        "**/*",
+        "*"
+      ],
+      "use_dynamic_url": false
+    }
+  ]
+}
