@@ -1,8 +1,7 @@
-# Nix flake related files
-.direnv/
-
-# Mac related files
 .DS_Store
+.env
+/node_modules/
 
-# Bun related files
-node_modules
+# React Router
+/.react-router/
+/build/
