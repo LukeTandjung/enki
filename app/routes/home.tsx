@@ -1,4 +1,5 @@
 import type { Route } from "./+types/home";
+import type { Mcp } from "types";
 import { Separator } from "@base-ui-components/react/separator";
 import { ScrollArea } from "@base-ui-components/react/scroll-area";
 import { Button } from "@base-ui-components/react/button";
@@ -17,7 +18,7 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  const mcps = [
+  const mcps: Array<Mcp> = [
     {
       name: "Notion",
       status: "connected",

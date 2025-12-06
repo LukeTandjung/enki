@@ -1,6 +1,7 @@
 import { Avatar } from "@base-ui-components/react/avatar";
 import { NavigationMenu } from "@base-ui-components/react/navigation-menu";
 import { Separator } from "@base-ui-components/react/separator";
+import { Link } from "react-router";
 import {
   responsivePadding,
   responsiveRounded,
@@ -23,11 +24,13 @@ export function MenuBar() {
         <NavigationMenu.Root className="flex h-full">
           <NavigationMenu.List className={`flex h-full items-center justify-end ${responsiveGap("base")}`}>
             <NavigationMenu.Item className="flex items-center">
-              <NavigationMenu.Trigger
-                className={`bg-background-select flex items-center ${responsivePadding("sm")} ${responsiveRounded("base")} font-medium ${responsiveTextFull("sm")} text-border-focus`}
-              >
-                Style
-              </NavigationMenu.Trigger>
+              <Link to="/styles">
+                <NavigationMenu.Trigger
+                  className={`flex items-center ${responsivePadding("sm")} ${responsiveRounded("base")} font-medium ${responsiveTextFull("sm")} text-text`}
+                >
+                  Style
+                </NavigationMenu.Trigger>
+              </Link>
             </NavigationMenu.Item>
 
             <NavigationMenu.Item className="flex items-center">
