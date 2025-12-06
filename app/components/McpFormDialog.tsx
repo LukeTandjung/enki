@@ -12,9 +12,11 @@ import {
 
 interface McpFormDialogProps {
   trigger: ReactNode;
+  title?: string;
+  description?: string;
 }
 
-export function McpFormDialog({ trigger }: McpFormDialogProps) {
+export function McpFormDialog({ trigger, title = "Add MCP", description = "Add the MCP you want to create a frontend for." }: McpFormDialogProps) {
   return (
     <Dialog.Root>
       <Dialog.Trigger
@@ -31,13 +33,13 @@ export function McpFormDialog({ trigger }: McpFormDialogProps) {
           <Dialog.Title
             className={`font-medium ${responsiveTextFull("base")} text-text`}
           >
-            Add MCP
+            {title}
           </Dialog.Title>
 
           <Dialog.Description
             className={`font-light ${responsiveTextFull("xs")} text-text-alt`}
           >
-            Add the MCP you want to create a frontend for.
+            {description}
           </Dialog.Description>
 
           <div

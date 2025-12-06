@@ -44,7 +44,7 @@ export function FormField({
       <Field.Control
         render={multiline ? <textarea rows={3} /> : <input />}
         placeholder={placeholder}
-        className={`bg-background-select ${responsivePadding("sm")} ${responsiveRounded("base")} ${responsiveTextFull("xs")} text-text-alt placeholder:text-text-alt w-full ${multiline ? "resize-none" : ""}`}
+        className={`bg-background-select ${responsivePadding("sm")} ${responsiveRounded("base")} ${responsiveTextFull("xs")} text-text placeholder:text-text-alt w-full ${multiline ? "resize-none" : ""}`}
       />
     </Field.Root>
   );

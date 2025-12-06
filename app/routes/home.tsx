@@ -1,25 +1,10 @@
 import type { Route } from "./+types/home";
-import { useState } from "react";
 import { Separator } from "@base-ui-components/react/separator";
-import { Collapsible } from "@base-ui-components/react/collapsible";
 import { ScrollArea } from "@base-ui-components/react/scroll-area";
 import { Button } from "@base-ui-components/react/button";
-import {
-  UserIcon,
-  RectangleStackIcon,
-  ChevronRightIcon,
-  ChevronDownIcon,
-} from "@heroicons/react/16/solid";
-import { SectionCard, TokenProgress, MenuBar, McpFormDialog } from "components";
-import {
-  responsivePadding,
-  responsiveRounded,
-  responsiveTextFull,
-  responsiveGap,
-  responsiveIconSize,
-  responsiveP,
-  responsivePx,
-} from "utils";
+import { UserIcon, RectangleStackIcon } from "@heroicons/react/16/solid";
+import { SectionCard, TokenProgress, MenuBar, McpFormDialog, McpCollapsibleItem } from "components";
+import { responsivePadding, responsiveRounded, responsiveTextFull, responsiveGap, responsiveIconSize, responsiveP } from "utils";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -91,92 +76,16 @@ export default function Home() {
           >
             <ScrollArea.Root className="flex sm:grow min-h-0 w-full">
               <ScrollArea.Viewport className="flex grow min-h-0">
-                <div
-                  className={`flex flex-col ${responsiveGap("sm")} grow min-h-0`}
-                >
-                  {mcps.map((mcp) => {
-                    const [open, setOpen] = useState(false);
-                    return (
-                      <Collapsible.Root
-                        key={mcp.name}
-                        className={`border border-border-unfocus border-solid flex flex-col ${responsiveGap("xs")} ${responsiveP("sm")} ${responsiveRounded("base")} w-full`}
-                        open={open}
-                        onOpenChange={setOpen}
-                      >
-                        <Collapsible.Trigger
-                          className={`flex items-center justify-between w-full font-medium ${responsiveTextFull("sm")} text-text`}
-                        >
-                          <span>{mcp.name}</span>
-                          {open ? (
-                            <ChevronDownIcon
-                              className={responsiveIconSize("xs")}
-                            />
-                          ) : (
-                            <ChevronRightIcon
-                              className={responsiveIconSize("xs")}
-                            />
-                          )}
-                        </Collapsible.Trigger>
-
-                        <Collapsible.Panel
-                          className={`flex flex-col ${responsiveGap("base")} w-full`}
-                        >
-                          {/* Status and Endpoint */}
-                          <div
-                            className={`flex flex-col ${responsiveGap("xs")}`}
-                          >
-                            <div
-                              className={`flex ${responsiveGap("xs")} items-center`}
-                            >
-                              <p
-                                className={`font-normal ${responsiveTextFull("xs")} text-text-alt`}
-                              >
-                                Status:
-                              </p>
-                              <div
-                                className={`${
-                                  mcp.status === "connected"
-                                    ? "bg-ok"
-                                    : "bg-error"
-                                } ${responsivePx("xs")} ${responsiveRounded("base")}`}
-                              >
-                                <p
-                                  className={`font-normal ${responsiveTextFull("xs")} text-text`}
-                                >
-                                  {mcp.status}
-                                </p>
-                              </div>
-                            </div>
-
-                            <div
-                              className={`flex ${responsiveGap("xs")} items-center font-normal ${responsiveTextFull("xs")} text-text-alt`}
-                            >
-                              <p>Endpoint:</p>
-                              <p>{mcp.endpoint}</p>
-                            </div>
-                          </div>
-
-                          {/* Developer Tokens Progress */}
-                          <TokenProgress
-                            label="Developer Tokens"
-                            current={mcp.tokens.current}
-                            max={mcp.tokens.max}
-                            period="this month"
-                          />
-
-                          {/* Button Group */}
-                          <div className={`flex ${responsiveGap("lg")} w-full`}>
-                            <McpFormDialog trigger="Edit" />
-                            <Button
-                              className={`bg-error ${responsivePadding("sm")} ${responsiveRounded("base")} font-medium ${responsiveTextFull("sm")} text-text`}
-                            >
-                              Remove
-                            </Button>
-                          </div>
-                        </Collapsible.Panel>
-                      </Collapsible.Root>
-                    );
-                  })}
+                <div className={`flex flex-col ${responsiveGap("sm")} grow min-h-0`}>
+                  {mcps.map((mcp) => (
+                    <McpCollapsibleItem
+                      key={mcp.name}
+                      name={mcp.name}
+                      status={mcp.status}
+                      endpoint={mcp.endpoint}
+                      tokens={mcp.tokens}
+                    />
+                  ))}
                 </div>
               </ScrollArea.Viewport>
             </ScrollArea.Root>
