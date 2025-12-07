@@ -1,11 +1,5 @@
 import { Field } from "@base-ui-components/react/field";
 import type { ReactNode } from "react";
-import {
-  responsivePadding,
-  responsiveRounded,
-  responsiveTextFull,
-  responsiveGap,
-} from "utils";
 
 interface FormFieldProps {
   label: string;
@@ -24,18 +18,18 @@ export function FormField({
 }: FormFieldProps) {
   return (
     <Field.Root
-      className={`flex flex-col ${responsiveGap("xs")} w-full`}
+      className="flex flex-col gap-2.5 w-full"
       name={name}
     >
       <Field.Label
-        className={`font-normal ${responsiveTextFull("sm")} text-text`}
+        className="font-normal text-lg leading-7 text-text"
       >
         {label}
       </Field.Label>
 
       {description && (
         <Field.Description
-          className={`font-light ${responsiveTextFull("xs")} text-text-alt`}
+          className="font-light text-base leading-7 text-text-alt"
         >
           {description}
         </Field.Description>
@@ -44,7 +38,7 @@ export function FormField({
       <Field.Control
         render={multiline ? <textarea rows={3} /> : <input />}
         placeholder={placeholder}
-        className={`bg-background-select ${responsivePadding("sm")} ${responsiveRounded("base")} ${responsiveTextFull("xs")} text-text placeholder:text-text-alt w-full ${multiline ? "resize-none" : ""}`}
+        className={`bg-background-select px-3 py-2 rounded-lg text-base leading-7 text-text placeholder:text-text-alt w-full ${multiline ? "resize-none" : ""}`}
       />
     </Field.Root>
   );

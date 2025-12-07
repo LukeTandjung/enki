@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import { responsiveGap, responsiveP, responsiveRounded, responsiveTextFull } from "utils";
 
 interface SectionCardProps {
   icon: ReactNode;
@@ -17,15 +16,13 @@ export function SectionCard({
   className = "",
 }: SectionCardProps) {
   return (
-    <div
-      className={`bg-background-alt flex flex-col ${responsiveGap("sm")} ${responsiveP("base")} ${responsiveRounded("base")} w-full ${className}`}
-    >
-      <div className={`flex flex-col ${responsiveGap("xs")}`}>
-        <div className={`flex ${responsiveGap("xs")} items-center font-medium ${responsiveTextFull("base")} text-text`}>
+    <div className={`bg-background-alt flex flex-col gap-3.5 p-6 rounded-lg w-full ${className}`}>
+      <div className="flex flex-col gap-2.5">
+        <div className="flex gap-2.5 items-center font-medium text-xl leading-8 text-text">
           {icon}
           {title}
         </div>
-        <div className={`flex w-full font-light ${responsiveTextFull("xs")} text-text-alt`}>
+        <div className="flex w-full font-light text-base leading-7 text-text-alt">
           {description}
         </div>
       </div>

@@ -4,8 +4,13 @@ import { Separator } from "@base-ui-components/react/separator";
 import { ScrollArea } from "@base-ui-components/react/scroll-area";
 import { Button } from "@base-ui-components/react/button";
 import { UserIcon, RectangleStackIcon } from "@heroicons/react/16/solid";
-import { SectionCard, TokenProgress, MenuBar, McpFormDialog, McpCollapsibleItem } from "components";
-import { responsivePadding, responsiveRounded, responsiveTextFull, responsiveGap, responsiveIconSize, responsiveP } from "utils";
+import {
+  SectionCard,
+  TokenProgress,
+  MenuBar,
+  McpFormDialog,
+  McpCollapsibleItem,
+} from "components";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -34,7 +39,7 @@ export default function Home() {
   ];
   return (
     <div className="bg-background flex flex-col h-screen w-full">
-      <div className="h-[100px] sm:h-[140px] md:h-[180px] lg:h-[260px] xl:h-[300px] relative w-full flex-shrink-0">
+      <div className="h-[300px] relative w-full shrink-0">
         <img
           src="/assets/banner.png"
           alt="Banner"
@@ -42,42 +47,36 @@ export default function Home() {
         />
       </div>
 
-      <div
-        className={`flex flex-col ${responsiveGap("base")} grow min-h-0 ${responsiveP("base")} w-full`}
-      >
+      <div className="flex flex-col gap-6 grow min-h-0 p-6 w-full">
         <MenuBar />
 
         <Separator className="w-full bg-border-unfocus h-0.5" />
 
-        <div
-          className={`flex flex-col sm:flex-row ${responsiveGap("base")} grow min-h-0 w-full`}
-        >
+        <div className="flex flex-col md:flex-row gap-6 md:grow md:min-h-0 w-full">
           {/* Personal Tokens Section */}
           <SectionCard
-            icon={<UserIcon className={responsiveIconSize("sm")} />}
+            icon={<UserIcon className="size-7" />}
             title="Personal Tokens"
             description="Rebuild any MCP frontend with personal tokens."
-            className="grow min-h-0"
+            className="md:grow md:min-h-0"
           >
             <TokenProgress label="Rebuild Tokens" current={45} max={100} />
 
-            <Button
-              className={`sm:mt-auto bg-background-select ${responsivePadding("sm")} ${responsiveRounded("base")} font-medium ${responsiveTextFull("sm")} text-text w-fit`}
-            >
+            <Button className="mt-auto bg-background-select px-3 py-2 rounded-lg font-medium text-lg leading-7 text-text w-fit">
               Buy tokens
             </Button>
           </SectionCard>
 
           {/* Active MCPs Section */}
           <SectionCard
-            icon={<RectangleStackIcon className={responsiveIconSize("sm")} />}
+            icon={<RectangleStackIcon className="size-7" />}
             title="Active MCPs"
             description="Manage your active MCPs here."
-            className="grow min-h-0"
+            className="md:grow md:min-h-0"
           >
-            <ScrollArea.Root className="flex sm:grow min-h-0 w-full">
+            <ScrollArea.Root className="flex grow min-h-0 w-full">
               <ScrollArea.Viewport className="flex grow min-h-0">
-                <div className={`flex flex-col ${responsiveGap("sm")} grow min-h-0`}>
+                <div className="flex flex-col gap-3.5 grow min-h-0">
                   {mcps.map((mcp) => (
                     <McpCollapsibleItem
                       key={mcp.name}

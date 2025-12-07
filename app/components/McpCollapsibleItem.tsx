@@ -4,7 +4,6 @@ import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/16/solid";
 import { TokenProgress } from "./TokenProgress";
 import { McpFormDialog } from "./McpFormDialog";
 import { RemoveMcpDialog } from "./RemoveMcpDialog";
-import { responsiveGap, responsiveP, responsiveRounded, responsiveTextFull, responsiveIconSize, responsivePx } from "utils";
 
 interface McpCollapsibleItemProps {
   name: string;
@@ -16,47 +15,53 @@ interface McpCollapsibleItemProps {
   };
 }
 
-export function McpCollapsibleItem({ name, status, endpoint, tokens }: McpCollapsibleItemProps) {
+export function McpCollapsibleItem({
+  name,
+  status,
+  endpoint,
+  tokens,
+}: McpCollapsibleItemProps) {
   const [open, setOpen] = useState(false);
 
   return (
     <Collapsible.Root
-      className={`border border-border-unfocus border-solid flex flex-col ${responsiveGap("xs")} ${responsiveP("sm")} ${responsiveRounded("base")} w-full`}
+      className="border border-border-unfocus border-solid flex flex-col gap-2.5 p-3.5 rounded-lg w-full"
       open={open}
       onOpenChange={setOpen}
     >
       <Collapsible.Trigger
-        className={`flex items-center justify-between w-full font-medium ${responsiveTextFull("sm")} text-text`}
+        className="flex items-center justify-between w-full font-medium text-lg leading-7 text-text"
       >
         <span>{name}</span>
         {open ? (
-          <ChevronDownIcon className={responsiveIconSize("xs")} />
+          <ChevronDownIcon className="size-6" />
         ) : (
-          <ChevronRightIcon className={responsiveIconSize("xs")} />
+          <ChevronRightIcon className="size-6" />
         )}
       </Collapsible.Trigger>
 
-      <Collapsible.Panel className={`flex flex-col ${responsiveGap("base")} w-full`}>
+      <Collapsible.Panel
+        className="flex flex-col gap-6 w-full"
+      >
         {/* Status and Endpoint */}
-        <div className={`flex flex-col ${responsiveGap("xs")}`}>
-          <div className={`flex ${responsiveGap("xs")} items-center`}>
-            <p className={`font-normal ${responsiveTextFull("xs")} text-text-alt`}>
-              Status:
-            </p>
+        <div className="flex flex-col gap-2.5">
+          <div
+            className="flex gap-2.5 items-center font-normal text-base leading-7 text-text-alt"
+          >
+            Status:
             <div
               className={`${
                 status === "connected" ? "bg-ok" : "bg-error"
-              } ${responsivePx("xs")} ${responsiveRounded("base")}`}
+              } px-2.5 rounded-lg font-normal text-base leading-7 text-text`}
             >
-              <p className={`font-normal ${responsiveTextFull("xs")} text-text`}>
-                {status}
-              </p>
+              {status}
             </div>
           </div>
 
-          <div className={`flex ${responsiveGap("xs")} items-center font-normal ${responsiveTextFull("xs")} text-text-alt`}>
-            <p>Endpoint:</p>
-            <p>{endpoint}</p>
+          <div
+            className="flex gap-2.5 items-center font-normal text-base leading-7 text-text-alt"
+          >
+            Endpoint: {endpoint}
           </div>
         </div>
 
@@ -69,7 +74,9 @@ export function McpCollapsibleItem({ name, status, endpoint, tokens }: McpCollap
         />
 
         {/* Button Group */}
-        <div className={`flex ${responsiveGap("lg")} w-full mt-2 sm:mt-3 md:mt-4 lg:mt-5`}>
+        <div
+          className="flex gap-7 w-full mt-5"
+        >
           <McpFormDialog
             trigger="Edit"
             title="Edit MCP"
